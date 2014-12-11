@@ -13,7 +13,6 @@ def compute_Ys(y,i):
     return (Yp, Yf), (Ypp, Yfm)
 
 def compute_Os((Yp,Yf),(Ypp,Yfm)):
-    # TODO could low-rank chol update save a factor of 2 here?
     Oi = project_rowspace(Yf,Yp)
     Oim1 = project_rowspace(Yfm,Ypp)
     return Oi, Oim1
