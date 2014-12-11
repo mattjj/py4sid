@@ -69,6 +69,7 @@ def print_enter_exit(func):
     global indentlevel
     indentlevel = 0
 
+    @functools.wraps(func)
     def wrapped(*args,**kwargs):
         global indentlevel
         printnow('   '*indentlevel + 'entering %s...' % func.__name__)
