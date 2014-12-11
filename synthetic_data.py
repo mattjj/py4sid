@@ -29,9 +29,8 @@ def rand_data(T,(A,B,C,D)):
 
     return x, y
 
-def rand_lds_and_data(T,n,p):
+def rand_lds_and_data(T,n,p,eig_min=0.5,eig_max=1.0):
     lds = rand_lds(n,p)
     data = rand_data(T,lds)
     return lds, data
-
 

@@ -13,21 +13,21 @@ from util import plot_eigvals
 if __name__ == '__main__':
     # data parameters
     n, p = 3, 5
-    T = 10000
+    T = 20000
 
     # algorithm parameters
     i = 40
 
     # generate a system and simulate from it
-    (A,B,C,D), (x,y) = rand_lds_and_data(T,n,p)
+    (A,B,C,D), (x,y) = rand_lds_and_data(T,n,p,eig_min=0.5,eig_max=1.0)
 
     # try to recover parameters (up to similarity transform)
     Ahat, Bhat, Chat, Dhat = estimate_parameters_4sid(y,i,nhat=n)
 
     # inspect the results a bit
     plt.figure()
-    print np.linalg.eigvals(A)
-    print np.linalg.eigvals(Ahat)
+    print sorted(np.linalg.eigvals(A),key=np.real)
+    print sorted(np.linalg.eigvals(Ahat),key=np.real)
     plot_eigvals(A,'bo')
     plot_eigvals(Ahat,'rx')
 
