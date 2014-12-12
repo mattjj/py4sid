@@ -8,15 +8,16 @@ from util import plot_eigvals
 
 # TODO use multiple sequences to estimate moments
 # TODO work out how the complexity scales with data/algorithm parameters
+#      - recovery seems much better with small i, statistical power is bottleneck
 # TODO recovery experiments
 
 if __name__ == '__main__':
     # data parameters
-    n, p = 3, 5
-    T = 20000
+    n, p = 5, 10
+    T = 10000
 
     # algorithm parameters
-    i = 40
+    i = 10
 
     # generate a system and simulate from it
     (A,B,C,D), (x,y) = rand_lds_and_data(T,n,p,eig_min=0.5,eig_max=1.0)
@@ -30,6 +31,8 @@ if __name__ == '__main__':
     print sorted(np.linalg.eigvals(Ahat),key=np.real)
     plot_eigvals(A,'bo')
     plot_eigvals(Ahat,'rx')
+
+    plt.savefig('results.pdf')
 
     plt.show()
 
