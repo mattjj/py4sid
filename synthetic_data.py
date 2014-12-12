@@ -10,7 +10,7 @@ def rand_lds(n,p,eig_min=0.5,eig_max=1.0):
 
     A = np.real(T.dot(np.diag(eigvals)).dot(np.linalg.inv(T)))
     B = np.eye(n)
-    C = np.vstack((np.eye(n),np.zeros((p-n,n))))
+    C = randn(p,n)
     D = 0.01*np.eye(p)
 
     return A,B,C,D

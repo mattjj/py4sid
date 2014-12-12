@@ -6,15 +6,12 @@ from synthetic_data import rand_lds_and_data
 from estimation import estimate_parameters_4sid
 from util import plot_eigvals
 
-# TODO use multiple sequences to estimate moments
-# TODO work out how the complexity scales with data/algorithm parameters
-#      - recovery seems much better with small i, statistical power is bottleneck
-# TODO recovery experiments
+# TODO multiple sequences
 
 if __name__ == '__main__':
     # data parameters
-    n, p = 5, 10
-    T = 10000
+    n, p = 10, 5
+    T = 20000
 
     # algorithm parameters
     i = 10
