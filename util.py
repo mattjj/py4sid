@@ -48,14 +48,23 @@ def thin_svd(A,k):
     U = Q.dot(Uhat)
     return U, Sigma, V.T
 
+def normalize(a):
+    return a / a.sum()
+
 #########
 #  viz  #
 #########
 
 def plot_eigvals(mat,*args,**kwargs):
     evals = np.linalg.eigvals(mat)
+    print sorted(evals,key=np.real)
     plt.plot(np.real(evals),np.imag(evals),*args,**kwargs)
     plt.axis([-1,1,-1,1])
+
+def plot_singularvals(mat,*args,**kwargs):
+    svals = normalize(np.linalg.svd(mat)[1])
+    print svals
+    plt.plot(svals)
 
 ##########
 #  text  #

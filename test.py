@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 
 from synthetic_data import rand_lds_and_data
 from estimation import estimate_parameters_4sid
-from util import plot_eigvals
+from util import plot_eigvals, normalize, plot_singularvals
 
 # TODO multiple sequences
 
@@ -24,10 +24,14 @@ if __name__ == '__main__':
 
     # inspect the results a bit
     plt.figure()
-    print sorted(np.linalg.eigvals(A),key=np.real)
-    print sorted(np.linalg.eigvals(Ahat),key=np.real)
+
+    plt.subplot(2,1,1)
     plot_eigvals(A,'bo')
     plot_eigvals(Ahat,'rx')
+
+    plt.subplot(2,1,2)
+    plot_singularvals(C,'b')
+    plot_singularvals(Chat,'r')
 
     plt.savefig('results.pdf')
 
