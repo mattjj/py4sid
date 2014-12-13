@@ -7,11 +7,12 @@ from estimation import estimate_parameters_4sid
 from util import plot_eigvals, normalize, plot_singularvals
 
 # TODO multiple sequences
+# TODO is algorithm 2 more statistically efficient?
 
 if __name__ == '__main__':
     # data parameters
-    n, p = 10, 5
-    T = 20000
+    n, p = 16, 8
+    T = 30000
 
     # algorithm parameters
     i = 10
