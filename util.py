@@ -38,7 +38,7 @@ def solve_psd(A,b,overwrite_b=False,return_chol=False):
         return dposv(A,b,overwrite_b=overwrite_b)[1]
 
 # http://web.stanford.edu/group/mmds/slides2010/Martinsson.pdf
-def thin_svd(A,k):
+def thin_svd_randomized(A,k):
     n = A.shape[1]
     Omega = randn(n,k)
     Y = A.dot(Omega)
@@ -47,6 +47,11 @@ def thin_svd(A,k):
     Uhat, Sigma, V = np.linalg.svd(B)
     U = Q.dot(Uhat)
     return U, Sigma, V.T
+
+def thin_svd(A,k):
+    U, s, VT = np.linalg.svd(A)
+    return U[:,:k], s[:k], VT[:k]
+
 
 def normalize(a):
     return a / a.sum()
